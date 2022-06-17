@@ -16,13 +16,17 @@ List all blogs
 
 ---
 Get single blog (blog details)
-![all-blogs](/screenshots/blog-details.png)
+![single-blogs](/screenshots/blog-details.png)
 
 ---
 Update blog form
-![all-blogs](/screenshots/update-form.png)
+![update-blogs](/screenshots/update-form.png)
+
+---
+Updated blog
+![updated-blogs](/screenshots/updated-blog.png)
 
 ---
 Delete Blog
-![all-blogs](/screenshots/blog-deleted.png)
+![delete-blogs](/screenshots/blog-deleted.png)
 
