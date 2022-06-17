@@ -37,7 +37,7 @@ app.use("/", blogRoutes);
 const setup = async () => {
   const db = await dbPromise;
   await db.migrate();
-  app.listen(5000, () => {
+  app.listen(process.env.PORT || 5000, () => {
     console.log("Listening on port 5000");
   });
 };
