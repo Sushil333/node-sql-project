@@ -8,13 +8,17 @@ import blogRoutes from "./routes/blogRoutes.js";
 
 const app = express();
 
-// app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  // cookie: { secure: true }
+  cookie: { 
+    secure: true,
+    maxAge:60000
+  }
 }))
+
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
