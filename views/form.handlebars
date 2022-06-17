@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="d-flex flex-column mx-auto mt-5" style="max-width: 450px;">
+        <div>
+            <a href="/" class="text-center btn btn-sm btn-light shadow-sm">Go back</a>
+        </div>
+        <form class="d-flex flex-column p-3 shadow-sm mt-3" {{#if blog }} action="/blog/update/{{blog.id}}" {{else}} action="/blog/create" {{/if}} method="POST">
+
+            {{#if message }}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {{/if}}
+            <h3 class="mt-3">
+                {{#if isUpdating }}
+                    Update Blog
+                {{else}} 
+                    Create new blog
+                {{/if}}    
+            </h3>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" value="{{blog.title}}" name="title" id="title" required>
+                <label for="title">Blog Title*</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" value="{{blog.author}}" name="author" id="author" required>
+                <label for="author">Author*</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" value="{{blog.category}}" name="category" id="category" required>
+                <label for="category">Category*</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="description" name="description" style="height: 100px" required>{{blog.description}}</textarea>
+                <label for="description">Description*</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
