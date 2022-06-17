@@ -2,11 +2,14 @@ import express from "express";
 import { engine } from 'express-handlebars';
 import morgan from "morgan";
 import session from 'express-session';
+import createMemoryStore from 'memorystore'
 
 import dbPromise from "./db/config.js";
 import blogRoutes from "./routes/blogRoutes.js";
 
 const app = express();
+
+const MemoryStore = new createMemoryStore(session);
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
@@ -16,7 +19,10 @@ app.use(session({
   cookie: { 
     secure: true,
     maxAge:60000
-  }
+  },
+  store: new MemoryStore({
+    checkPeriod: 86400000 // prune expired entries every 24h
+  })
 }))
 
 app.engine('handlebars', engine());
